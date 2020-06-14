@@ -1,0 +1,148 @@
+.container{
+  max-width: 100% !important;
+  padding: 0 !important;;
+  margin: 0 !important;
+}
+
+table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td {
+  overflow: initial !important;
+}
+
+svg {
+  overflow: visible !important;
+  vertical-align: top;
+}
+
+#chart_wrapper {
+  background-color: #ffffff;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 255, .05) 25%,
+  rgba(0, 0, 255, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 255, .05) 75%,
+  rgba(0, 0, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%,
+  rgba(0, 0, 255, .05) 25%, rgba(0, 0, 255, .05) 26%, transparent 27%, transparent 74%,
+  rgba(0, 0, 255, .05) 75%, rgba(0, 0, 255, .05) 76%, transparent 77%, transparent);
+  background-size:50px 50px;
+  overflow: auto;
+}
+
+#main_chart{
+  width: 100%;
+  height: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: auto;
+  max-height: 1600px;
+
+}
+
+circle {
+  stroke: white;
+  stroke-width: 1px;
+  opacity: .9;
+}
+
+.popover {
+  max-width:100%;
+  /*overflow: auto;*/
+}
+.popover table{
+  width: 100%;
+  font-size: 9px;
+}
+.popover table td,
+.popover table th
+{
+  padding: 0;
+}
+.label {
+  fill: black;
+  font-size: 12px;
+}
+
+#infoch {
+  position: relative;
+  top:0;
+  left: 5px;
+  width: 900px;
+  font-size: 12px;
+  display: none;
+  color: black;
+}
+
+.oznaka {
+  position: absolute;
+  border-top: solid 1px #000;
+  margin-top: 0;
+  left: 0;
+  width: 900px;
+  text-align: left;
+}
+
+.nivo {
+  position: absolute;
+  border-top: dashed 2px #999;
+  margin-top: 0;
+  left: 0;
+  width: 900px;
+  text-align: left;
+}
+
+.nivo0 {
+  position: absolute;
+  border-top: solid 2px #000;
+  margin-top: 0;
+  left: 0;
+  width: 900px;
+  text-align: left;
+}
+
+.popover-title {
+  color: black;
+  font-size: 10px;
+}
+.popover-content {
+  color: black;
+  font-size: 10px;
+}
+
+table.infot td {
+  text-align: right;
+  border: 1px solid #aaa;
+  padding-left: 5px;
+}
+
+table.infot th {
+  background: #ccc;
+  text-align: right;
+  border: 1px solid #aaa;
+  padding-left: 5px;
+}
+
+[data-toggle=buttons]>.btn input[type=checkbox], [data-toggle=buttons]>.btn input[type=radio], [data-toggle=buttons]>.btn-group>.btn input[type=checkbox], [data-toggle=buttons]>.btn-group>.btn input[type=radio] {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  pointer-events: none;
+}
+
+.dropdown-menu{
+  font-size: 0.8rem !important;
+  padding: 5px !important;
+}
+
+.btn-default.active, .btn-default.dropdown-toggle{
+  color: white !important;
+  background: #0D4077 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+#po_programima{
+  font-size: 10px;
+}
+#po_programima td{
+  padding: 0 8px 0 0;
+}
+.drawer-controls{
+  padding: 55px 0 0 10px;
+}
+.drawer {
+  background-color: rgab(248,248,248,0.7) !important;
+}

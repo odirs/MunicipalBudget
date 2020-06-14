@@ -1,0 +1,159 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function opstine_theme() {
+  $theme['opstine_front'] = array(
+    'variables' => array()
+  );
+  $theme['opstine_report_list'] = array(
+    'variables' => array()
+  );
+  $theme['opstine_report_search'] = array(
+    'variables' => array()
+  );
+  $theme['opstine_report_manual_parser'] = array(
+    'variables' => array()
+  );
+  $theme['opstine_report_present'] = array(
+    'variables' => array()
+  );
+  $theme['opstine_report_tree'] = array(
+    'variables' => array()
+  );
+  $theme['opstine_cp'] = array(
+    'variables' => array()
+  );
+	return $theme;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function opstine_menu() {
+  $items['admin/config/system/opstine_mongo'] = array(
+    'title' => t('MongoDB connector'),
+    'description' => t('MongoDB baza budžeta'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('opstine_mongodb_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'opstine_admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['opstine/%/%'] = array(
+    'title' => 'Opštine',
+    'description' => t('Opstine Front Page'),
+    'page callback' => 'opstine_front',
+    'page arguments' => array(1,2),
+    'access callback' => TRUE,
+    'file' => 'opstine_front.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['opstine_report_list'] = array(
+    'title' => 'Lista izveštaja',
+    'description' => t('Opstina Reports List'),
+    'page callback' => 'opstine_report_list',
+    //'page arguments' => array(1),
+    'access callback' => 'user_is_logged_in',
+    'file' => 'opstine_report_list.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['opstine_report_form/%'] = array(
+    'title' => 'Izveštaj',
+    'description' => t('Opstine Report Page'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('opstine_input_form',1),
+    'access callback' => 'user_is_logged_in',
+    'file' => 'opstine_input_form.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['opstine_report_delete/%'] = array(
+    'page callback' => 'opstine_report_delete',
+    'page arguments' => array(1),
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['opstine_report_parsing'] = array(
+    'title' => 'Manual Parsing',
+    'page callback' => 'opstine_report_manual_parser',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer users'),
+    'file' => 'opstine_parser.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['opstine_report_present_cb'] = array(
+    'page callback' => 'opstine_report_present_cb',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['opstine_report_present'] = array(
+    'page callback' => 'opstine_report_present',
+    'access callback' => TRUE,
+    'file' => 'opstine_present.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['rashodi_tree/%'] = array(
+    'page callback' => 'opstine_report_tree',
+	  'page arguments' => array(1),
+	  'access callback' => TRUE,
+    'file' => 'opstine_treemap.inc',
+    'type' => MENU_CALLBACK,
+  );
+  $items['cp/%/%'] = array(
+    'page callback' => 'opstine_cp',
+    'page arguments' => array(1,2),
+    'access callback' => TRUE,
+    'file' => 'opstine_cp.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function opstine_report_delete($id){
+  $submited_reports = db_select('opstine_reports','o')
+    ->fields('o')
+    ->condition('id', $id, '=')
+    ->execute();
+  $all_reports = $submited_reports->fetchAll();
+  foreach ($all_reports as $report){
+    $infile_fid=$report->file_income_fid;
+    $outfile_fid=$report->file_outcome_fid;
+  }
+
+  $in_file = file_load($infile_fid);
+  file_delete($in_file, true);
+
+  $out_file = file_load($outfile_fid);
+  file_delete($out_file, true);
+
+  $num_deleted = db_delete('opstine_reports')->condition('id', $id)->execute();
+
+  print '{"msg": "ok-'.$id.'", "out_fid":'.$outfile_fid.'", "in_fid":'.$infile_fid.'}';
+  die();
+}
+
+function opstine_report_present_cb(){
+  $sql = "SELECT municipality_id, report_year FROM {opstine_reports} ORDER BY municipality_id, report_year";
+  $r = db_query($sql);
+  $results = $r->fetchAll();
+  $submitted=array();
+  foreach ($results as $result){
+    $t=taxonomy_term_load($result->municipality_id);
+    $submitted[$t->name][]=$result->report_year;
+  }
+  /*$submitted_arr=array();
+  foreach ($submitted as $ok=>$ov){
+    $submitted_o=new stdClass();
+    $submitted_o->opstina=$ok;
+    $submitted_o->godine=$ov;
+    $submitted_arr[]=$submitted_o;
+  }
+  print drupal_json_encode($submitted_arr);*/
+  print drupal_json_encode($submitted);
+  exit;
+}

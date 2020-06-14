@@ -1,0 +1,30 @@
+// Custom Bootstrap Variables
+@import "../../node_modules/bootstrap/scss/functions";
+@import "variables";
+// Bootsrtap 4
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "flex-mixins";
+// Custom Components
+@import "main";
+@import "main_header";
+@import "jumbotron";
+@import "breadcrumb";
+@import "text";
+@import "misc";
+@import "pager";
+@import "articles";
+@import "navs";
+@import "tables";
+@import "blast";
+@import "elasticsearch";
+@import "collapse";
+@import "progress";
+@import "download-page";
+@import "admin";
+@import "flex-control";
+@import "form";
+@import "dropdown";
+@import "cards";
+@import "tripal-entity";
+@import "survey";
+@import "announcement";

@@ -1,0 +1,209 @@
+.margin-top-1 {
+  margin-top: 2.5rem;
+}
+.remove-margin {
+  margin: 0;
+}
+.main-search-form {
+  .input-group-addon {
+    background: #fff;
+    border-color: $input-border-color;
+  }
+  .form-control {
+    //border-color: #fff;
+  }
+}
+.bg-gray {
+  background-color: $gray-100;
+}
+.bg-inverse {
+  background: #2a2730 !important;
+}
+.img-max-h100 {
+  max-height: 100px;
+}
+.textarea-lg {
+  min-height: 200px;
+}
+.btn {
+  margin-right: 5px;
+}
+.node-teaser {
+  margin-bottom: 3rem;
+}
+.element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+}
+.links.inline {
+  margin-left: 0;
+  padding-left: 0;
+  > li {
+    display: inline-block;
+    margin-right: $spacer;
+  }
+}
+textarea.form-control {
+  min-height: 150px;
+}
+fieldset {
+  border: 1px groove $card-border-color !important;
+  padding: 0 $spacer $spacer $spacer !important;
+  margin: 0 0 $spacer 0 !important;
+  box-shadow: none;
+}
+legend {
+  width: inherit;
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  padding: $spacer;
+  margin-bottom: 0;
+}
+.fieldset-wrapper {
+  padding: 10px 15px;
+}
+.form-file {
+  + .btn {
+    margin-top: 10px;
+  }
+}
+#edit-cancel {
+  @extend .btn;
+  @extend .btn-link;
+}
+.tripal-contents-table-td.tripal-contents-table-td-toc {
+  border-right: 1px solid $table-border-color !important;
+  border-top: 0 !important;
+}
+#page-title {
+  font-size: 1.6rem;
+}
+#edit-submit-d7-organism {
+  margin-top: 32px;
+}
+.collapse.in {
+  display: block;
+}
+.card {
+  @extend .mb-3;
+}
+.font-normal {
+  font-weight: normal;
+}
+.marker {
+  @extend .badge;
+  @extend .badge-success;
+}
+#autocomplete {
+  position: absolute;
+  background: #fff;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius;
+  ul, ol {
+    padding: 10px 0;
+    margin: 0;
+    list-style: none;
+    max-height: 300px;
+    overflow: auto;
+    > li {
+      padding: 10px 10px;
+      margin: 0 10px 5px 10px;
+      cursor: pointer;
+      border-radius: $border-radius;
+      background-color: $gray-200;
+      color: #666;
+      &:hover {
+        background: theme-color(primary);
+        color: #fff;
+      }
+    }
+  }
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: $border-radius;
+}
+.form-type-select,
+.form-select {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+.progress-disabled {
+  float: left;
+  display: inline;
+}
+.ajax-progress {
+  float: none;
+  display: inline-block !important;
+}
+.ajax-progress .throbber {
+  float: left;
+  height: 15px;
+  margin: 2px;
+  width: 15px;
+  display: inline-block !important;
+}
+tr .ajax-progress .throbber {
+  margin: 0 2px;
+}
+.ajax-progress-bar {
+  width: 16em;
+}
+.genomic-data-container {
+  .card {
+    flex-grow: 1;
+    width: calc(100% * (1 / 4) - 10px);
+    margin: 10px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    p {
+      color: $gray-600;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    flex-wrap: wrap !important;
+
+    .card {
+      width: auto !important;
+      margin: 0;
+    }
+  }
+}
+#expression_heat_map_canvas {
+  .js-plotly-plot .plotly {
+    [data-title] {
+      /**
+       * tooltip body
+       */
+      &:after {
+        background: $gray-200!important;
+        color: $gray-700;
+        padding: 0.5rem 1rem;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        white-space: normal;
+        border-radius: $border-radius;
+      }
+    }
+  }
+}

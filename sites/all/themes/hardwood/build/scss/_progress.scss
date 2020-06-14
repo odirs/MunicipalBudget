@@ -1,0 +1,35 @@
+.form-group {
+  //position: relative;
+  //@include clearfix();
+}
+
+.ajax-progress,
+.ajax-progress-throbber {
+  position: absolute;
+  right: 5px;
+  bottom: 35px;
+  width: 100%;
+  text-align: right;
+  display: inline-block;
+
+  &:before {
+    font-family: FontAwesome;
+    content: '\f110';
+    margin-right: 10px;
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    display: inline-block;
+  }
+
+  .message {
+    display: none;
+  }
+}
+
+.form-control.progress-disabled {
+  float: none !important;
+}
+
+select.progress-disabled {
+  float: none !important;
+}

@@ -1,0 +1,125 @@
+ul.tabs {
+  @extend .nav;
+  @extend .nav-pills;
+  margin-bottom: 1rem;
+  border: 1px solid $card-border-color;
+  padding: .5rem;
+  border-radius: $card-border-radius;
+  > li {
+    @extend .nav-item;
+    > a {
+      @extend .nav-link;
+      padding: .5em .5em;
+    }
+  }
+}
+
+.navbar {
+  .dropdown-menu {
+    margin-top: 0;
+    padding: 0;
+    > ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      > li {
+        display: block;
+        width: 100%;
+      }
+      > li > a {
+        font-size: $font-size-sm;
+        margin: 0;
+        padding: $nav-link-padding;
+        &:hover {
+          background: $dropdown-link-hover-bg;
+        }
+      }
+    }
+  }
+}
+
+.nav {
+  &.flex-column {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+
+    .nav-link {
+      min-width: 200px;
+      border-left: 4px solid transparent;
+      border-bottom: 1px solid $gray-300;
+      padding: $nav-link-padding;
+      color: $gray-600;
+
+      &.active {
+        border-left-color: theme-color();
+        color: theme-color();
+      }
+
+      &:hover {
+        background-color: $gray-100;
+      }
+    }
+
+    li {
+      &:first-of-type {
+        > .nav-link {
+          border-top-left-radius: $border-radius;
+        }
+      }
+
+      &:last-of-type {
+        > .nav-link {
+          border-bottom-left-radius: $border-radius;
+        }
+      }
+    }
+  }
+}
+
+.help-tab-pane {
+  box-shadow: $box-shadow;
+  padding: 1rem;
+  border-radius: $border-radius;
+  color: $gray-800;
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 .5rem 0;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2), 0 2px 3px rgba(0, 0, 0, 0.125);
+    border-radius: $border-radius;
+  }
+
+  .tab-pane-title,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $gray-800;
+    font-weight: $font-weight-light;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1.75rem;
+  }
+
+  .tab-pane-title {
+    h2,
+    h3,
+    h4 {
+      margin-top: 0;
+    }
+  }
+}
+
+.link-darker {
+  color: $gray-700;
+}
+
+.link-dark {
+  color: $gray-600;
+}

@@ -1,0 +1,49 @@
+.collapsed > .fieldset-wrapper {
+  display: none;
+}
+
+fieldset.collapsible {
+  legend {
+    position: relative;
+    padding-right: 2rem;
+    &:before {
+      font-family: FontAwesome;
+      position: absolute;
+      content: '\f0d7'; // Left caret
+      color: theme-color(primary);
+      right: 1rem;
+    }
+  }
+
+  &.collapsed {
+    legend:before {
+      content: '\f0d9'; // Down caret
+    }
+  }
+}
+
+.tripal-toc-pane {
+  @extend .nav;
+  @extend .nav-pills;
+  @extend .flex-column;
+  .tripal_toc_list_item {
+    @extend .nav-item;
+    padding: 0 !important;
+    border-radius: $border-radius;
+    &:hover {
+      background-color: #f7f7f7;
+    }
+  }
+  .tripal_toc_list_item_link {
+    @extend .nav-link;
+    padding: .5rem .3rem;
+    margin-top: 0 !important;
+    &.active {
+      background-color: #fff;
+      font-weight: bold;
+      color: #444;
+    }
+  }
+
+  padding: 0;
+}

@@ -1,0 +1,88 @@
+// Main Header Component
+.main-header {
+  background-color: #fff;
+  border-top: 6px solid theme-color(success);
+  box-shadow: 0 2px 3px rgba(#000, .125);
+
+  .nav-link {
+    padding: 1rem .4rem;
+  }
+
+  .nav-item {
+    margin: 0!important;
+  }
+
+  .logo-icon {
+    font-size: 30px;
+    display: block;
+    float: left;
+    color: theme-color(success);
+    height: 48px;
+    line-height: 48px;
+    border: 2px solid theme-color(success);
+    padding: 0 5px;
+    border-radius: $border-radius;
+    @include media-breakpoint-down(xs) {
+      height: 40px;
+      line-height: 40px;
+      font-size: 24px;
+    }
+  }
+
+  .logo-wrapper {
+    margin-left: 50px;
+  }
+
+  .logo-text {
+    //letter-spacing: 2px;
+    font-weight: bold;
+    @include media-breakpoint-down(xs) {
+      margin-top: 7px;
+      display: inline-block;
+    }
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+    @include media-breakpoint-up(lg) {
+      max-height: 500px;
+      overflow: auto;
+    }
+  }
+
+  .dropdown.open > .dropdown-menu {
+    display: block;
+  }
+
+  > .container {
+    @include media-breakpoint-down(xs) {
+      margin: 0 5px;
+    }
+  }
+
+  .navbar-toggler {
+    margin-top: 8px;
+    @include media-breakpoint-down(xs) {
+      margin-top: 4px;
+    }
+  }
+}
+
+.admin-menu-position-fixed {
+  z-index: 999999!important;
+}
+
+[class*="navbar-toggleable"] {
+  @include media-breakpoint-down(md) {
+    > .navbar-nav {
+      position: relative;
+      width: 100%;
+      display: block;
+      float: none!important;
+      .nav-item {
+        display: block;
+        float: none;
+      }
+    }
+  }
+}
