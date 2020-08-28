@@ -1,2 +1,1 @@
-# Visualization of Local Government Budgeting in Serbia
-
+# Visualization of Local Self-governance Budgeting in Serbia
